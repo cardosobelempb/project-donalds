@@ -37,7 +37,7 @@ model RestaurantCategory {
   name String
 
   restaurantId String     @map("restaurant_id") @db.Uuid
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
 
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
@@ -55,10 +55,10 @@ model Product {
   ingredients String[]
 
   restaurantId String     @map("restaurant_id") @db.Uuid
-  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
 
   categoryId String          @map("category_id") @db.Uuid
-  category   ProductCategory @relation(fields: [categoryId], references: [id])
+  category   ProductCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   createdAt DateTime       @default(now()) @map("created_at")
   updatedAt DateTime?      @updatedAt @map("updated_at")
