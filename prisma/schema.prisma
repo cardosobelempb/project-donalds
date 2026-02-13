@@ -16,7 +16,7 @@ datasource db {
 model Restaurant {
   id             String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name           String
-  slug           String
+  slug           String @unique
   description    String
   avatarImageUrl String @map("avatar_image_url")
   coverImageUrl  String @map("cover_image_url")
